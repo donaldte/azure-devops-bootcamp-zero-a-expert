@@ -366,10 +366,10 @@ Nous allons illustrer le déploiement d'un serveur Jenkins sur une VM Azure (fam
 
 4. **Se connecter à la VM en SSH**
    ```bash
-   ssh azureuser@<public-ip>
+   ssh -i votre-fichier-pem azureuser@<public-ip>
    ```
 
-5. **Installer Jenkins**
+5. **Installer Jenkins** documentation ici: https://www.jenkins.io/doc/book/installing/linux/
    ```bash
    sudo apt update
    sudo apt install openjdk-11-jdk -y
