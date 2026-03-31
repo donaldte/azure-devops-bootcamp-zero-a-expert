@@ -59,9 +59,9 @@
 
 ### 1.1 Qu’est-ce qu’Azure CLI ? (What)
 
-**Azure CLI** (Command‑Line Interface) est un outil multiplateforme permettant de gérer les ressources Microsoft Azure directement depuis la ligne de commande. Optimisé pour l’automatisation et la facilité d’utilisation, il propose des commandes simples qui s’intègrent parfaitement avec le modèle Azure Resource Manager (ARM)[reference:0].
+**Azure CLI** (Command‑Line Interface) est un outil multiplateforme permettant de gérer les ressources Microsoft Azure directement depuis la ligne de commande. Optimisé pour l’automatisation et la facilité d’utilisation, il propose des commandes simples qui s’intègrent parfaitement avec le modèle Azure Resource Manager (ARM).
 
-Azure CLI est disponible sur Windows, macOS et Linux, ainsi que directement dans le navigateur via **Azure Cloud Shell** (Bash ou PowerShell)[reference:1].
+Azure CLI est disponible sur Windows, macOS et Linux, ainsi que directement dans le navigateur via **Azure Cloud Shell** (Bash ou PowerShell).
 
 ### 1.2 Pourquoi utiliser Azure CLI ? (Why)
 
@@ -122,7 +122,7 @@ az version
 
 ### 2.2 Utilisation via Azure Cloud Shell
 
-La méthode la plus simple pour commencer est d’utiliser **Azure Cloud Shell**, accessible depuis le portail Azure ou via `https://shell.azure.com`. Aucune installation n’est requise, et vous bénéficiez de la dernière version d’Azure CLI préinstallée[reference:2].
+La méthode la plus simple pour commencer est d’utiliser **Azure Cloud Shell**, accessible depuis le portail Azure ou via `https://shell.azure.com`. Aucune installation n’est requise, et vous bénéficiez de la dernière version d’Azure CLI préinstallée.
 
 ### 2.3 Configuration initiale et authentification
 
@@ -132,7 +132,7 @@ La méthode la plus simple pour commencer est d’utiliser **Azure Cloud Shell**
 az login
 ```
 
-Si Azure CLI peut ouvrir votre navigateur par défaut, il lance le flux d’autorisation. Sinon, il propose un flux avec code d’appareil[reference:3]. Après connexion, la liste de vos abonnements s’affiche.
+Si Azure CLI peut ouvrir votre navigateur par défaut, il lance le flux d’autorisation. Sinon, il propose un flux avec code d’appareil. Après connexion, la liste de vos abonnements s’affiche.
 
 **Sélectionner un abonnement par défaut**
 
@@ -204,15 +204,15 @@ az vm create --help
 
 ### 4.1 Formats de sortie : JSON, Table, TSV, YAML
 
-Par défaut, Azure CLI affiche les résultats en **JSON**[reference:4]. Vous pouvez modifier ce comportement avec `--output`.
+Par défaut, Azure CLI affiche les résultats en **JSON**. Vous pouvez modifier ce comportement avec `--output`.
 
 | Format | Description |
 |--------|-------------|
 | `json` | JSON par défaut |
 | `jsonc` | JSON coloré |
-| `table` | Table ASCII avec en‑têtes de colonnes[reference:5] |
-| `tsv` | Valeurs séparées par des tabulations, sans clés[reference:6] |
-| `yaml` | YAML lisible par un humain[reference:7] |
+| `table` | Table ASCII avec en‑têtes de colonnes |
+| `tsv` | Valeurs séparées par des tabulations, sans clés |
+| `yaml` | YAML lisible par un humain |
 
 **Exemples :**
 
@@ -229,9 +229,9 @@ az vm show --name MyVM --resource-group MyRG --output yaml
 
 ### 4.2 Introduction à JMESPath
 
-**JMESPath** est un langage de requête pour JSON, intégré nativement dans Azure CLI via le paramètre `--query`[reference:8]. Il vous permet de sélectionner et transformer les données de sortie directement dans la ligne de commande, sans avoir à utiliser des outils externes comme `jq`.
+**JMESPath** est un langage de requête pour JSON, intégré nativement dans Azure CLI via le paramètre `--query`. Il vous permet de sélectionner et transformer les données de sortie directement dans la ligne de commande, sans avoir à utiliser des outils externes comme `jq`.
 
-Toutes les commandes Azure CLI supportent le paramètre `--query`[reference:9]. Les requêtes sont exécutées **côté client** sur l’objet JSON retourné par la commande[reference:10].
+Toutes les commandes Azure CLI supportent le paramètre `--query`. Les requêtes sont exécutées **côté client** sur l’objet JSON retourné par la commande.
 
 ### 4.3 Requêtes avancées et transformations
 
@@ -276,7 +276,7 @@ az vm list --query "[].{Name:name, PublicIP:publicIpAddress}" --output table
 
 ### 5.1 Gestion des groupes de ressources (az group)
 
-Un **groupe de ressources** est un conteneur logique qui regroupe les ressources associées d’une solution Azure[reference:11].
+Un **groupe de ressources** est un conteneur logique qui regroupe les ressources associées d’une solution Azure.
 
 **Créer un groupe de ressources**
 
@@ -302,7 +302,7 @@ az group show --name MyResourceGroup
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-> `--yes` supprime la confirmation, `--no-wait` rend la commande non-bloquante[reference:12].
+> `--yes` supprime la confirmation, `--no-wait` rend la commande non-bloquante.
 
 ### 5.2 Gestion des étiquettes (tags)
 
@@ -340,7 +340,7 @@ az vm create \
   --size Standard_B1s
 ```
 
-> L’option `--generate-ssh-keys` génère automatiquement une paire de clés SSH si elle n’existe pas[reference:13].
+> L’option `--generate-ssh-keys` génère automatiquement une paire de clés SSH si elle n’existe pas.
 
 **Lister les VM d’un groupe**
 
@@ -425,7 +425,7 @@ Un script Azure CLI bien structuré comprend généralement :
 - **Variables** : pour stocker les noms, localisations, configurations
 - **Commentaires** : pour documenter la logique
 - **Gestion des erreurs** : validation avant création
-- **Boucles et conditions** : pour créer plusieurs ressources[reference:14]
+- **Boucles et conditions** : pour créer plusieurs ressources
 
 ### 6.2 Variables et paramètres
 
@@ -554,7 +554,7 @@ az login --service-principal -u <appId> -p <password> --tenant <tenant>
 
 - **Ne jamais coder en dur les secrets** : Utilisez des variables d’environnement ou Azure Key Vault.
 - **Utiliser des identités managées** dans les VM ou Azure Functions pour éviter la gestion des secrets.
-- **MFA obligatoire** : Depuis septembre 2025, Microsoft exige l’authentification multifacteur pour les comptes utilisateurs dans Azure CLI[reference:15]. Migrez vos workflows automatisés vers des principaux de service ou identités managées.
+- **MFA obligatoire** : Depuis septembre 2025, Microsoft exige l’authentification multifacteur pour les comptes utilisateurs dans Azure CLI. Migrez vos workflows automatisés vers des principaux de service ou identités managées.
 
 ---
 
@@ -619,10 +619,10 @@ steps:
 
 | Erreur | Cause probable | Solution |
 |--------|----------------|----------|
-| `az login` ne répond pas | Navigateur bloqué | Utilisez `az login --use-device-code`[reference:16] |
+| `az login` ne répond pas | Navigateur bloqué | Utilisez `az login --use-device-code` |
 | `Permission denied` | Droits RBAC insuffisants | Vérifiez les attributions de rôles avec `az role assignment list` |
 | `Resource not found` | Ressource inexistante ou mauvais groupe | Vérifiez avec `az resource list --resource-group` |
-| Authentification MFA bloquée | Utilisation d’un compte utilisateur dans un pipeline | Migrez vers un principal de service[reference:17] |
+| Authentification MFA bloquée | Utilisation d’un compte utilisateur dans un pipeline | Migrez vers un principal de service|
 
 ### 9.2 Optimisation des performances
 
