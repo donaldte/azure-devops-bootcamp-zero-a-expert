@@ -76,7 +76,6 @@ run "production_configuration" {
     soft_delete_retention_days = 90
   }
   
-  # On teste uniquement ce qui est défini dans la configuration
   assert {
     condition     = variables.account_replication_type == "GRS"
     error_message = "La production doit utiliser GRS"
