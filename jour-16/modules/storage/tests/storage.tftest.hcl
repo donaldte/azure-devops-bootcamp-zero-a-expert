@@ -30,8 +30,26 @@ run "basic_storage_creation" {
   }
 }
 
+# Test 2: Création avec conteneurs
+run "storage_with_containers" {
+  command = plan
 
-# Test 2: Override du nom
+  variables {
+    containers = {
+      "data"   = { access_type = "private" }
+      "logs"   = { access_type = "private" }
+      "public" = { access_type = "blob" }
+    }
+  }
+
+  # Assertion compatible plan-only
+  assert {
+    condition     = length(var.containers) == 3
+    error_message = "3 conteneurs doivent être définis dans la configuration"
+  }
+}
+
+# Test 3: Override du nom
 run "storage_name_override" {
   command = plan
   
@@ -39,15 +57,14 @@ run "storage_name_override" {
     storage_account_name_override = "customstorage123"
   }
   
-  # On teste uniquement la valeur définie dans la configuration
   assert {
-    condition     = variables.storage_account_name_override == "customstorage123"
+    condition     = var.storage_account_name_override == "customstorage123"
     error_message = "Le nom override n'a pas été appliqué dans la config"
   }
 }
 
 
-# Test 3: Configuration Production
+# Test 4: Configuration Production
 run "production_configuration" {
   command = plan
   
