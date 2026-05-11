@@ -69,13 +69,13 @@ run "production_configuration" {
   command = plan
   
   variables {
-    environment = "prod"
-    account_replication_type = "GRS"
+    environment                = "prod"
+    account_replication_type   = "GRS"
     soft_delete_retention_days = 90
   }
   
   assert {
-    condition     = variables.account_replication_type == "GRS"
+    condition     = var.account_replication_type == "GRS"
     error_message = "La production doit utiliser GRS"
   }
 }
