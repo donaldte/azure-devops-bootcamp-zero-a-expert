@@ -6,8 +6,8 @@
 4. [Infrastructure Globale : Régions et Zones de Disponibilité](#4-infrastructure-globale--régions-et-zones-de-disponibilité)
 5. [Scalabilité, Élasticité et Haute Disponibilité](#5-scalabilité-élasticité-et-haute-disponibilité)
 6. [Reprise après sinistre et objectifs de performance](#6-reprise-après-sinistre-et-objectifs-de-performance)
-7.
-8. ----
+
+----
 
 9. ## 1. Introduction au Cloud Computing
 
