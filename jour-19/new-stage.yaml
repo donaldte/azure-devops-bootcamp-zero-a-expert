@@ -1,0 +1,20 @@
+- stage: ArgoCD
+  displayName: ArgoCDSYNC
+  jobs:
+  - job: ArgoCDupdate
+    displayName: ArgoCDupdate
+    steps:
+
+    - script: |
+        dos2unix scripts/updatek8smanifest.sh
+        chmod +x scripts/updatek8smanifest.sh
+        cat -A scripts/updatek8smanifest.sh
+      displayName: "Convert script to Unix format"
+
+    - task: ShellScript@2
+      displayName: "Update Kubernetes manifest"
+      inputs:
+        scriptPath: 'scripts/updatek8smanifest.sh'
+        args: 'worker $(imageRepository) $(tag)'
+
+# faudra installer sudo apt-get install dos2unix dans la vm de l'agent        
